@@ -76,6 +76,7 @@ export class GildedRose {
   }
 }
 
+
 export class GildedRose2 {
   items: Array<Item>;
 

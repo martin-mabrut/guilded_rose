@@ -2,13 +2,13 @@ import { Item, GildedRose, GildedRose2 } from '@/gilded-rose';
 
 describe('Gilded Rose', () => {
   it('should foo', () => {
-    const gildedRose = new GildedRose2([new Item('foo', 0, 0)]);
+    const gildedRose = new GildedRose([new Item('foo', 0, 0)]);
     const items = gildedRose.updateQuality();
     expect(items[0].name).toBe('foo');
   });
 
   it('should deteriorate', () => {
-    const gildedRose = new GildedRose2([new Item('foo', 2, 2)]);
+    const gildedRose = new GildedRose([new Item('foo', 2, 2)]);
     const items = gildedRose.updateQuality();
     expect(items[0].name).toBe('foo');
     expect(items[0].sellIn).toBe(1);
