@@ -24,6 +24,12 @@ export class GildedRose {
   }
 
   increaseQuality(item, number: number) {
+    const sum = item.quality + number;
+
+    if(sum >= 50) {
+      item.quality = 50;
+      return;
+    }
     item.quality += number;
   }
 
@@ -43,23 +49,19 @@ export class GildedRose {
             }
           
         } else {
-          if (this.items[i].quality < 50) {
+          
             this.increaseQuality(this.items[i], 1);
             if (
               this.items[i].name == "Backstage passes to a TAFKAL80ETC concert"
             ) {
               if (this.items[i].sellIn < 11) {
-                if (this.items[i].quality < 50) {
                   this.increaseQuality(this.items[i], 1);
-                }
               }
               if (this.items[i].sellIn < 6) {
-                if (this.items[i].quality < 50) {
                   this.increaseQuality(this.items[i], 1);
-                }
               }
-            }
-          }
+            }    
+
         }
       if (this.items[i].name != "Sulfuras, Hand of Ragnaros") {
         this.decreaseSellIn(this.items[i]);
@@ -79,9 +81,9 @@ export class GildedRose {
               this.items[i].quality - this.items[i].quality;
           }
         } else {
-          if (this.items[i].quality < 50) {
+          
             this.increaseQuality(this.items[i], 1);
-          }
+          
         }
       }
     }
