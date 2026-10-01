@@ -75,3 +75,59 @@ export class GildedRose {
     return this.items;
   }
 }
+
+export class GildedRose2 {
+  items: Array<Item>;
+
+  constructor(items = [] as Array<Item>) {
+    this.items = items;
+  }
+
+  updateQuality() {
+    this.items.forEach((item) => {
+
+      switch(item.name) {
+
+        case "Sulfuras, Hand of Ragnaros":
+          break;
+
+        default:
+
+        item.sellIn -= 1;
+
+        switch(item.name) {
+
+          case "Aged Brie": 
+            item.quality += 1;
+
+          case "Backstage passes to a TAFKAL80ETC concert":
+            if (item.sellIn < 6) {
+              item.quality += 3;
+            } else if (item.sellIn < 11) {
+              item.quality += 2;
+            } else {
+              item.quality += 1;
+            }
+          
+            break;
+
+          default:
+
+            if(item.sellIn < 0) {
+              item.quality -= 2;
+            } else {
+              item.quality -= 1;
+            }
+
+        }
+
+        if(item.quality > 50) {
+          item.quality = 50;
+        }
+      }
+
+    })
+
+    return this.items;
+  }
+}
